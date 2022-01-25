@@ -2,15 +2,21 @@ import type { NextPage } from 'next'
 import Scene from '../components/aframe/Scene'
 import Camera from '../components/aframe/Camera'
 import Box from '../components/aframe/Box'
-import { useEffect, useState } from 'react'
+import useGeolocation from 'react-use/lib/useGeolocation'
+import { useMounted } from '../lib/hooks/useMounted'
+import { useNearby } from '../lib/hooks/useNearby'
 
 const Home: NextPage = () => {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = useMounted()
+  const { latitude, longitude, loading: loadingGeolocation } = useGeolocation()
+  const { data } = useNearby(loadingGeolocation, {
+    lat: String(latitude),
+    lng: String(longitude),
+  })
 
-  return mounted ? (
+  if (!mounted) return <div>loading...</div>
+
+  return (
     <div style={{ width: '100vw', height: '100vh' }}>
       <Scene
         embedded=""
@@ -24,20 +30,18 @@ const Home: NextPage = () => {
           camera=""
         />
 
-        <Box
-          gps-Entity-Place="latitude: 34.67439174652549; longitude: 135.49141395963895;"
-          id="block"
-          color="#df609c"
-        />
-
-        <Box
-          gps-Entity-Place="latitude: 33.562941; longitude: 130.414829;"
-          id="block"
-          color="#df609c"
-        />
+        {data &&
+          data.results.map(r => (
+            <Box
+              key={r.place_id}
+              id={r.place_id}
+              gps-Entity-Place={`latitude: ${r.geometry?.location.lat}; longitude: ${r.geometry?.location.lng};`}
+              color="#df609c"
+            />
+          ))}
       </Scene>
     </div>
-  ) : null
+  )
 }
 
 export default Home

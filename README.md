@@ -1,6 +1,6 @@
 # react-aframe-demo
 
-This is demo project with 
+This is demo AR project with 
 - React(Next.js)
 - TypeScript
 - aframe
