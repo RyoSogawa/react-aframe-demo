@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
-import Scene from '../components/aframe/Scene'
-import Camera from '../components/aframe/Camera'
-import Box from '../components/aframe/Box'
+import AScene from '../components/aframe/AScene'
+import ACamera from '../components/aframe/ACamera'
+import ABox from '../components/aframe/ABox'
 import useGeolocation from 'react-use/lib/useGeolocation'
 import { useMounted } from '../lib/hooks/useMounted'
 import { useNearby } from '../lib/hooks/useNearby'
@@ -18,13 +18,13 @@ const Home: NextPage = () => {
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <Scene
+      <AScene
         embedded=""
         renderer="colorManagement: true"
         vr-Mode-Ui="enabled: false"
         arjs="trackingMethod: best; sourceType: webcam; matrixCodeType: 3x3;detectionMode:mono_and_matrix; debugUIEnabled: false;"
       >
-        <Camera
+        <ACamera
           gps-Camera="maxDistance:30"
           cursor="rayOrigin: mouse; fuse:false"
           camera=""
@@ -32,14 +32,14 @@ const Home: NextPage = () => {
 
         {data &&
           data.results.map(r => (
-            <Box
+            <ABox
               key={r.place_id}
               id={r.place_id}
               gps-Entity-Place={`latitude: ${r.geometry?.location.lat}; longitude: ${r.geometry?.location.lng};`}
               color="#df609c"
             />
           ))}
-      </Scene>
+      </AScene>
     </div>
   )
 }

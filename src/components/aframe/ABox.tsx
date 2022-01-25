@@ -1,10 +1,10 @@
 import React from 'react'
 
 /**
- *
+ * a-box
  */
-const Box = ({ children, ...props }: any): JSX.Element => {
+const ABox = ({ children, ...props }: any): JSX.Element => {
   return React.createElement('a-box', props, children)
 }
 
-export default Box
+export default ABox
