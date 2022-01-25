@@ -44,5 +44,6 @@ module.exports = {
     'object-shorthand': ['error', 'properties'],
     'no-console': ['error', { allow: ['warn', 'error'] }],
     '@next/next/no-img-element': 'off',
+    '@next/next/no-sync-scripts': 'off',
   },
 }
