@@ -187,6 +187,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
+"@types/giphy-api@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@types/giphy-api/-/giphy-api-2.0.3.tgz#cdb689040bb61fbb8d3de094238cec16ca8c4e86"
+  integrity sha512-nqwYMwWwa6uwnj4RbiexCj9yPTQS8etUD5LyA4T7GwqyX5WDowJ+8c5J5N4QHJOvHXF1wzt/fQ0UIAkDJtg+ig==
+
 "@types/js-cookie@^2.2.6":
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
@@ -1013,6 +1018,11 @@ get-symbol-description@^1.0.0:
   dependencies:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
+
+giphy-api@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/giphy-api/-/giphy-api-2.0.2.tgz#458b8733f50818b602c7e582a75a3b3a8d7680cb"
+  integrity sha512-vZaLQhgMF0mDQSNpqooe4Zqoe2dWGqVYhh7Ar6I41BRtcZtfupr9avT23IIPScKBYfb3qAfiKQRQyKgLi8Lcxw==
 
 glob-parent@^5.1.2:
   version "5.1.2"
