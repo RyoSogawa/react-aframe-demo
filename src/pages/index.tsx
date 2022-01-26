@@ -1,10 +1,10 @@
 import type { NextPage } from 'next'
 import AScene from '../components/aframe/AScene'
 import ACamera from '../components/aframe/ACamera'
-import ABox from '../components/aframe/ABox'
 import useGeolocation from 'react-use/lib/useGeolocation'
 import { useMounted } from '../lib/hooks/useMounted'
 import { useNearby } from '../lib/hooks/useNearby'
+import Place from '../components/map/Place'
 
 const Home: NextPage = () => {
   const mounted = useMounted()
@@ -30,15 +30,7 @@ const Home: NextPage = () => {
           camera=""
         />
 
-        {data &&
-          data.results.map(r => (
-            <ABox
-              key={r.place_id}
-              id={r.place_id}
-              gps-Entity-Place={`latitude: ${r.geometry?.location.lat}; longitude: ${r.geometry?.location.lng};`}
-              color="#df609c"
-            />
-          ))}
+        {data && data.results.map(r => <Place key={r.place_id} {...r} />)}
       </AScene>
     </div>
   )

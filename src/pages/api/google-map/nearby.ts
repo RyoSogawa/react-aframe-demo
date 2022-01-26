@@ -1,9 +1,9 @@
-import { Client, Language } from '@googlemaps/google-maps-services-js'
-import type { NextApiRequest, NextApiResponse } from 'next'
 import type {
   PlacesNearbyResponse,
   PlacesNearbyResponseData,
 } from '@googlemaps/google-maps-services-js'
+import { Client, Language } from '@googlemaps/google-maps-services-js'
+import type { NextApiRequest, NextApiResponse } from 'next'
 import type { AxiosError } from 'axios'
 
 export default async function handler(
