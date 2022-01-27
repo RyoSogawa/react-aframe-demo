@@ -20,7 +20,7 @@ export default async function handler(
     })
 
   if (response?.data && response?.data.length > 0) {
-    const image = response.data[0].images.downsized_small
+    const image = response.data[0].images.preview
 
     res.status(200).json({ image })
   }
