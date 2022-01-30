@@ -15,13 +15,16 @@ const Place = (props: PlaceProps): JSX.Element => {
     keyword: convertAddressTypeToURI(types),
   })
 
-  const latLng = `latitude: ${geometry?.location.lat}; longitude: ${geometry?.location.lng};`
+  const commonProps = {
+    'look-At': '[gps-camera]',
+    'gps-Entity-Place': `latitude: ${geometry?.location.lat}; longitude: ${geometry?.location.lng};`,
+  }
 
   return (
     <>
       <ACone
+        {...commonProps}
         id={place_id}
-        gps-Entity-Place={latLng}
         color={icon_background_color}
         width={0.5}
         height={2}
@@ -29,15 +32,15 @@ const Place = (props: PlaceProps): JSX.Element => {
       {isValidating && (
         <>
           <APlane
-            gps-Entity-Place={latLng}
+            {...commonProps}
             position={'0 4 2'}
             color={'white'}
             width={8}
             height={6}
           />
           <AText
+            {...commonProps}
             value={'loading...'}
-            gps-Entity-Place={latLng}
             position={'0 4 0'}
             color={'black'}
             width={18}
@@ -48,8 +51,8 @@ const Place = (props: PlaceProps): JSX.Element => {
       )}
       {data && (
         <AImage
+          {...commonProps}
           src={data.image.mp4}
-          gps-Entity-Place={latLng}
           position={'0 4 2'}
           width={8}
           height={(data.image.height * 8) / data.image.width}
