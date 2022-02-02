@@ -32,6 +32,16 @@ const Home: NextPage = () => {
 
         {data && data.results.map(r => <Place key={r.place_id} {...r} />)}
       </AScene>
+      <img
+        src={'/Poweredby-giphy.png'}
+        alt={'powered by giphy'}
+        style={{
+          position: 'absolute',
+          bottom: '1rem',
+          right: '1rem',
+          width: '120px',
+        }}
+      />
     </div>
   )
 }
