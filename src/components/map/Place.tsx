@@ -3,16 +3,15 @@ import { PlaceData } from '@googlemaps/google-maps-services-js'
 import AImage from '../aframe/AImage'
 import ACone from '../aframe/ACone'
 import { useSearchGiphy } from '../../lib/hooks/useSearchGiphy'
-import { convertAddressTypeToURI } from '../../lib/utils'
 import APlane from '../aframe/APlane'
 import AText from '../aframe/AText'
 
 export type PlaceProps = Partial<PlaceData>
 
 const Place = (props: PlaceProps): JSX.Element => {
-  const { place_id, geometry, icon_background_color, types } = props
+  const { place_id, geometry, icon_background_color, name } = props
   const { data, isValidating } = useSearchGiphy({
-    keyword: convertAddressTypeToURI(types),
+    keyword: name || 'something',
   })
 
   const commonProps = {
