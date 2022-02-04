@@ -13,7 +13,7 @@ export default async function handler(
   })
 
   const response = await giphy
-    .search({ q: keyword, limit: 1, rating: 'y' })
+    .search({ q: keyword, limit: 1, rating: 'g' })
     .catch(err => {
       res.status(500)
       console.error(err)
