@@ -18,7 +18,9 @@ const Home: NextPage = () => {
     })
     commonProps = {
       'look-At': '[gps-camera]',
-      'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
+      'gps-entity-place':
+        'latitude: 37.492151723031024; longitude: 139.94461074269023;',
+      // 'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
     }
   })
 
