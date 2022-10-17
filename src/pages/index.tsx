@@ -5,6 +5,7 @@ import useGeolocation from 'react-use/lib/useGeolocation'
 import { useMounted } from '../lib/hooks/useMounted'
 import { useNearby } from '../lib/hooks/useNearby'
 import Place from '../components/map/Place'
+import AText from '../components/aframe/AText'
 
 const Home: NextPage = () => {
   const mounted = useMounted()
@@ -13,6 +14,11 @@ const Home: NextPage = () => {
     lat: String(latitude),
     lng: String(longitude),
   })
+
+  const commonProps = {
+    'look-At': '[gps-camera]',
+    'gps-Entity-Place': `latitude: 37.492151723031024; longitude: 139.94461074269023;`,
+  }
 
   if (!mounted) return <div>loading...</div>
 
@@ -30,7 +36,17 @@ const Home: NextPage = () => {
           camera=""
         />
 
-        {data && data.results.map(r => <Place key={r.place_id} {...r} />)}
+        <AText
+          {...commonProps}
+          value={'Hello, World'}
+          position={'0 4 0'}
+          color={'black'}
+          width={18}
+          align="center"
+          z-Offset={1}
+        />
+
+        {/* {data && data.results.map(r => <Place key={r.place_id} {...r} />)} */}
       </AScene>
       <img
         src={'/Poweredby-giphy.png'}
