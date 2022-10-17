@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useEffect } from 'react'
 import AScene from '../components/aframe/AScene'
 import ACamera from '../components/aframe/ACamera'
 import { useMounted } from '../lib/hooks/useMounted'
@@ -6,11 +7,20 @@ import AText from '../components/aframe/AText'
 
 const Home: NextPage = () => {
   const mounted = useMounted()
+  let latitude: string
+  let longitude: string
+  let commonProps: any
 
-  const commonProps = {
-    'look-At': '[gps-camera]',
-    'gps-Entity-Place': `latitude: 37.492151723031024; longitude: 139.94461074269023;`,
-  }
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(data => {
+      latitude = String(data.coords.latitude)
+      longitude = String(data.coords.longitude)
+    })
+    commonProps = {
+      'look-At': '[gps-camera]',
+      'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
+    }
+  })
 
   if (!mounted) return <div>loading...</div>
 
