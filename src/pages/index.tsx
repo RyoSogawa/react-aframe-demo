@@ -21,14 +21,15 @@ const Home: NextPage = () => {
   const commonProps = {
     'look-At': '[gps-camera]',
     'gps-entity-place':
-      'latitude: 37.492151723031024; longitude: 139.94461074269023;',
+      // 'latitude: 37.492151723031024; longitude: 139.94461074269023;',
+      'latitude: 37.5150016; longitude: 139.9335767;',
     // 'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
   }
 
   if (!mounted) return <div>loading...</div>
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+    <div style={{ width: '200vw', height: '400vh' }}>
       <AScene
         embedded=""
         renderer="colorManagement: true"
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
         <AText
           {...commonProps}
           value={'Hello, World'}
+          // scale={'10000 10000 10000'}
           position={'0 4 0'}
           color={'black'}
           width={18}
@@ -53,8 +55,11 @@ const Home: NextPage = () => {
 
         <AText
           {...commonProps}
-          value={'Hello, Demo'}
-          position={'4 4 0'}
+          value={
+            'Hello, Demo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+          }
+          scale={'1 1 1'}
+          position={'2 2 2'}
           color={'white'}
           width={18}
           align="center"

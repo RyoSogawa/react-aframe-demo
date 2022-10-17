@@ -26,7 +26,7 @@ export default async function handler(
       timeout: 1000, // milliseconds
     })
     .catch((e: AxiosError) => {
-      console.warn(e.response?.data.error_message)
+      // console.warn(e.response?.data.error_message)
       res.statusCode = e.response?.status || 500
     })
 
