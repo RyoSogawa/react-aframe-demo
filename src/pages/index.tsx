@@ -9,20 +9,21 @@ const Home: NextPage = () => {
   const mounted = useMounted()
   let latitude: string
   let longitude: string
-  let commonProps: any
+  // let commonProps: any
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(data => {
       latitude = String(data.coords.latitude)
       longitude = String(data.coords.longitude)
     })
-    commonProps = {
-      'look-At': '[gps-camera]',
-      'gps-entity-place':
-        'latitude: 37.492151723031024; longitude: 139.94461074269023;',
-      // 'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
-    }
   })
+
+  const commonProps = {
+    'look-At': '[gps-camera]',
+    'gps-entity-place':
+      'latitude: 37.492151723031024; longitude: 139.94461074269023;',
+    // 'gps-Entity-Place': `latitude: ${latitude}; longitude: ${longitude};`,
+  }
 
   if (!mounted) return <div>loading...</div>
 
