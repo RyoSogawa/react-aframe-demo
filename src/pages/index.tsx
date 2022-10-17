@@ -1,19 +1,11 @@
 import type { NextPage } from 'next'
 import AScene from '../components/aframe/AScene'
 import ACamera from '../components/aframe/ACamera'
-import useGeolocation from 'react-use/lib/useGeolocation'
 import { useMounted } from '../lib/hooks/useMounted'
-import { useNearby } from '../lib/hooks/useNearby'
-import Place from '../components/map/Place'
 import AText from '../components/aframe/AText'
 
 const Home: NextPage = () => {
   const mounted = useMounted()
-  const { latitude, longitude, loading: loadingGeolocation } = useGeolocation()
-  const { data } = useNearby(loadingGeolocation, {
-    lat: String(latitude),
-    lng: String(longitude),
-  })
 
   const commonProps = {
     'look-At': '[gps-camera]',
@@ -46,18 +38,16 @@ const Home: NextPage = () => {
           z-Offset={1}
         />
 
-        {/* {data && data.results.map(r => <Place key={r.place_id} {...r} />)} */}
+        <AText
+          {...commonProps}
+          value={'Hello, Demo'}
+          position={'4 4 0'}
+          color={'white'}
+          width={18}
+          align="center"
+          z-Offset={2}
+        />
       </AScene>
-      <img
-        src={'/Poweredby-giphy.png'}
-        alt={'powered by giphy'}
-        style={{
-          position: 'absolute',
-          bottom: '1rem',
-          right: '1rem',
-          width: '120px',
-        }}
-      />
     </div>
   )
 }
